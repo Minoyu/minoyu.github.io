@@ -1,1 +1,591 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>Core Java Day 3--基本编程结构3(操作运算、字符串) | 小余有个大梦想 | 我的学习笔记</title><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#3F51B5"><meta name="keywords" content="《Java核心技术》,学习笔记"><meta name="description" content="1.4 操作运算Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。 基本运算 要格外小心/操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。 整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。 若ｎ为奇数，当ｎ为正数时，n%2 的值为１； 当ｎ为负数时，n%2的值为－１。实际中处理"><meta name="keywords" content="《Java核心技术》,学习笔记"><meta property="og:type" content="article"><meta property="og:title" content="Core Java Day 3--基本编程结构3(操作运算、字符串)"><meta property="og:url" content="https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/index.html"><meta property="og:site_name" content="小余有个大梦想"><meta property="og:description" content="1.4 操作运算Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。 基本运算 要格外小心/操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。 整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。 若ｎ为奇数，当ｎ为正数时，n%2 的值为１； 当ｎ为负数时，n%2的值为－１。实际中处理"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://minoyu.github.io/img/core_java_post/day3-1.jpg"><meta property="og:image" content="https://minoyu.github.io/img/core_java_post/day3-2.jpg"><meta property="og:updated_time" content="2019-01-23T12:51:49.728Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Core Java Day 3--基本编程结构3(操作运算、字符串)"><meta name="twitter:description" content="1.4 操作运算Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。 基本运算 要格外小心/操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。 整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。 若ｎ为奇数，当ｎ为正数时，n%2 的值为１； 当ｎ为负数时，n%2的值为－１。实际中处理"><meta name="twitter:image" content="https://minoyu.github.io/img/core_java_post/day3-1.jpg"><link rel="alternate" type="application/atom+xml" title="小余有个大梦想" href="/atom.xml"><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css"><script>window.lazyScripts=[]</script></head><body><div id="loading" class="active"></div><aside id="menu" class="hide"><div class="inner flex-row-vertical"><a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off"><i class="icon icon-lg icon-close"></i></a><div class="brand-wrap" style="background-image:url(/img/brandbg.jpg)"><div class="brand"> <a href="https://we.sharelove.site/about/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.jpeg"></a><hgroup class="introduce"><h5 class="nickname">Minoyu</h5> <a href="mailto:yu-letao@outlook.com" title="yu-letao@outlook.com" class="mail">yu-letao@outlook.com</a></hgroup></div></div><div class="scroll-wrap flex-col"><ul class="nav"><li class="waves-block waves-effect"><a href="/"><i class="icon icon-lg icon-home"></i> Home</a></li><li class="waves-block waves-effect"><a href="https://we.sharelove.site" target="_blank"><i class="icon icon-lg icon-gratipay"></i> ShareLove</a></li><li class="waves-block waves-effect"><a href="/archives"><i class="icon icon-lg icon-archives"></i> Archives</a></li><li class="waves-block waves-effect"><a href="/tags"><i class="icon icon-lg icon-tags"></i> Tags</a></li><li class="waves-block waves-effect"><a href="/categories"><i class="icon icon-lg icon-th-list"></i> Categories</a></li><li class="waves-block waves-effect"><a href="https://github.com/Minoyu" target="_blank"><i class="icon icon-lg icon-github"></i> Github</a></li><li class="waves-block waves-effect"><a href="https://we.sharelove.site/about/" target="_blank"><i class="icon icon-lg icon-info"></i> Info</a></li></ul></div></div></aside><main id="main"><header class="top-header" id="header"><div class="flex-row"><a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle"><i class="icon icon-lg icon-navicon"></i></a><div class="flex-col header-title ellipsis">Core Java Day 3--基本编程结构3(操作运算、字符串)</div><div class="search-wrap" id="search-wrap"><a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back"><i class="icon icon-lg icon-chevron-left"></i></a> <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字"><a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search"><i class="icon icon-lg icon-search"></i></a></div><a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare"><i class="icon icon-lg icon-share-alt"></i></a></div></header><header class="content-header post-header"><div class="container fade-scale"><h1 class="title">Core Java Day 3--基本编程结构3(操作运算、字符串)</h1><h5 class="subtitle"> <time datetime="2018-10-22T15:06:11.000Z" itemprop="datePublished" class="page-time">2018-10-22</time><ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/Java/">Java</a></li></ul></li></ul></h5></div></header><div class="container body-wrap"><aside class="post-widget"><nav class="post-toc-wrap post-toc-shrink" id="post-toc"><h4>TOC</h4><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-4-操作运算"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.4 操作运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本运算"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数学方法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数学方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数字类型的转换"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数字类型的转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#大数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">大数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">字符串</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串连接"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">字符串连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#子字符串（字符串拆分）"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">子字符串（字符串拆分）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串比较"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">字符串比较</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#equalsIgnoreCase方法"><span class="post-toc-number">1.5.3.1.</span> <span class="post-toc-text">equalsIgnoreCase方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#compareTo方法"><span class="post-toc-number">1.5.3.2.</span> <span class="post-toc-text">compareTo方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数字与字符串转换"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">数字与字符串转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#String类API"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">String类API</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编码点和编码单元"><span class="post-toc-number">1.5.6.</span> <span class="post-toc-text">编码点和编码单元</span></a></li></ol></li></ol></li></ol></nav></aside><article id="post-Core-Java-Day-3-基本编程结构-3" class="post-article article-type-post fade" itemprop="blogPost"><div class="post-card"><h1 class="post-card-title">Core Java Day 3--基本编程结构3(操作运算、字符串)</h1><div class="post-meta"> <time class="post-time" title="2018-10-22 23:06:11" datetime="2018-10-22T15:06:11.000Z" itemprop="datePublished">2018-10-22</time><ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/Java/">Java</a></li></ul></li></ul><span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none"><i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span></span></div><div class="post-content" id="post-content" itemprop="postContent"><h2 id="1-4-操作运算"><a href="#1-4-操作运算" class="headerlink" title="1.4 操作运算"></a>1.4 操作运算</h2><p>Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。</p><h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><ul><li>要格外小心<code>/</code>操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。</li><li>整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。</li><li>若ｎ为奇数，当ｎ为正数时，<code>n%2</code> 的值为１； 当ｎ为负数时，<code>n%2</code>的值为－１。实际中处理负数是不幸的。当操作数可能为负数时，切记小心使用％。可以考虑使用Math.floorMod方法。</li></ul><h3 id="数学方法"><a href="#数学方法" class="headerlink" title="数学方法"></a>数学方法</h3><p>举个例子，没有操作符可以产生次方，但是你可以调用Math.pow方法，<code>Math.pow(x,y)</code>会产生ｘ的ｙ次方。</p><p>静态方法不用在对象上调用。像静态常量一样，你只需要在前面加上声明该静态方法/变量的类名</p><p>类似的方法还有<code>Math.sqrt</code>/<code>Math.min</code>/<code>Math.max</code>等</p><p>此外Math类中提供三角函数和对数方法，以及常量<code>Math.PI</code>和<code>Math.E</code>。</p><ul><li>Math类中提供一些可以让整数运算更安全的方法，你可以捕获异常或终止程序，而不会是像普通的数学运算符那样使程序以错误的结果默默继续运行。</li></ul><h3 id="数字类型的转换"><a href="#数字类型的转换" class="headerlink" title="数字类型的转换"></a>数字类型的转换</h3><p>在Java中，如果没有信息损失，转换总是合法的。</p><ul><li>从byte类型　到　short、int、long或double</li><li>从short和char类型　到　int、long或double</li><li>从int类型到long、double</li><li>从整型到浮点型总是合法的</li></ul><p>==需要注意的是　下面的转换是合法的，但是他们损失了信息==</p><ul><li>从int到float</li><li>从long到float或double。</li></ul><p>如果转换不允许，可以使用cast运算符（将目标类型写在括号中）来强制转换，例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = <span class="number">3.75</span>;</span><br><span class="line"><span class="keyword">int</span> n =(<span class="keyword">int</span>)x;</span><br><span class="line"><span class="comment">//这种情况下，就丢弃了小数部分，将ｎh设置为了3.</span></span><br></pre></td></tr></table></figure><p>如果你想获得四舍五入后的整数而不是直接丢弃小数，你可以使用Math.round(x)。</p><p>==当使用cast方式强制转换数据时，需要格外注意。==<br>如果你收到了警告，cast转换会悄悄地丢弃掉数字的部分数据，你可以使用Math.toIntExact方法代替，当无法转换时会抛出异常。</p><h3 id="大数"><a href="#大数" class="headerlink" title="大数"></a>大数</h3><p>如果基本的整数类型和浮点类型精确度还不够满足需求，你可以使用java.math包中的BigInteger和BigDecimal类。这些类的对象代表了数字，该数字有任意长序列的位数。他们实现了对任意精度整数/浮点数的计算。</p><p>BigInteger类的静态方法valueOf讲long型转换为BigInteger<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger n = BigInteger.valueOf(<span class="number">124135431242L</span>);</span><br></pre></td></tr></table></figure><p></p><p>你也可以使用数字字符串构造BigInteger:<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger m = <span class="keyword">new</span> BigInteger(<span class="string">"124135431242"</span>);</span><br></pre></td></tr></table></figure><p></p><p>Java不允许对象使用操作符，因此操作大数时，必须使用方法调用。例如<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BigInteger o = BigInteger.valueOf(<span class="number">5</span>).multiply(n.add(m))</span><br><span class="line"><span class="comment">//5*(n+m)</span></span><br></pre></td></tr></table></figure><p></p><p>记得在之前我们遇到的,使用浮点类型2.0-1.1的结果为0.99999999…吗,在这里我们使用BigDecimal可以计算出准确结果。<br>BigDecimal.valueOf(n,e) 返回BigDecimal实例，其值为ｎ×10的-e次方<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal.valueOf(<span class="number">2</span>,<span class="number">0</span>).substract(BigDecimal.valueOf(<span class="number">11</span>,<span class="number">1</span>))</span><br><span class="line"><span class="comment">//2.0-1.1 输出的结果精确为0.9</span></span><br></pre></td></tr></table></figure><p></p><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>字符串就是一系列的字符，在java中，字符串可以包含任何Unicode字符。</p><h4 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h4><p>可以使用操作符＋连接两个字符串<br>如果将一个字符串和另一个值连接起来，另一个值会转换为字符串。</p><p>==注意　如果将连接与加写在一起，可能会有意想不到的结果==<br>例如：<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> age =<span class="number">20</span>;</span><br><span class="line"><span class="string">"your age :"</span> + age + <span class="number">1</span>;</span><br><span class="line"><span class="comment">//结果为　your age : 201</span></span><br><span class="line"><span class="comment">//正确为"your age :" + （age + 1）;</span></span><br></pre></td></tr></table></figure><p></p><p>也可以使用String类下的join方法讲几个字符串连接起来并以分割符隔开<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String names = String.join(<span class="string">","</span>,<span class="string">"Mino"</span>,<span class="string">"Peter"</span>,<span class="string">"Paul"</span>);</span><br><span class="line"><span class="comment">//names的结果为“Mino,Peter,Paul“</span></span><br><span class="line"><span class="comment">//或者第二个参数提供字符串数组</span></span><br></pre></td></tr></table></figure><p></p><p>如果有大量字符串需要连接，那么上面这种方式是效率低下的，最好使用StringBuilder代替<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="keyword">while</span>(isMoreString)&#123;</span><br><span class="line">    builder.append(nextString);</span><br><span class="line">&#125;</span><br><span class="line">String result = builder.toString();</span><br></pre></td></tr></table></figure><p></p><h4 id="子字符串（字符串拆分）"><a href="#子字符串（字符串拆分）" class="headerlink" title="子字符串（字符串拆分）"></a>子字符串（字符串拆分）</h4><p>可以使用substring方法将字符串拆开<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String greeting = <span class="string">"Hello world"</span>;</span><br><span class="line">String location = greeting.substring(<span class="number">7</span>,<span class="number">12</span>);</span><br><span class="line"><span class="comment">//设置location为"world"(起位置７　结束位置12,字符串的位置从０开始)</span></span><br></pre></td></tr></table></figure><p></p><p>你也可以用split()方法将含有分隔符分割的字符串提取出子字符串，返回一个子字符串数组。<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String names = <span class="string">"Peter,Mino,Mary"</span>;</span><br><span class="line">String[] result = names.split(<span class="string">","</span>);</span><br><span class="line"><span class="comment">//返回的结果值为数组["Peter","Mino","Mary"]</span></span><br></pre></td></tr></table></figure><p></p><h4 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">location.equals(<span class="string">"world"</span>);</span><br><span class="line"><span class="comment">//若location是字符串”world“,返回真</span></span><br></pre></td></tr></table></figure><p>==不要使用<code>==</code>操作符来比较字符串，只有当两者在内存中为同一对象时，返回真，（可以看成地址的比较）。在Java虚拟机中，每个文字串只有一个实例，所以”world“<code>==</code>“world”为真，但是如果字符串是计算得来的，那么变量中的字符串会单独存放到一个实例中，此时虽然他们的值相等，但<code>==</code>返回值为假==</p><p>例如：<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"world"</span>==<span class="string">"world"</span>;</span><br><span class="line"><span class="comment">//返回true</span></span><br><span class="line">String greeting = <span class="string">"Hello world"</span>;</span><br><span class="line">String location = greeting.substring(<span class="number">7</span>,<span class="number">12</span>);</span><br><span class="line">location == <span class="string">"world"</span>;</span><br><span class="line"><span class="comment">//返回false</span></span><br></pre></td></tr></table></figure><p></p><p>与其他任何变量一样，String变量可以是null，这表明该变量根本没有引用任何对象，甚至不是一个空字符串。</p><p>null与空字符串<code>&quot;&quot;</code>并不相同。空字符串是个长度为零的字符串，而null根本不是字符串。在null上调用任何方法都会抛出空指针异常。</p><ul><li>可以使用<code>==</code>来测试一个字符串是否为null.<code>if(location == null)...</code></li><li>比较字符串和文字串时，将文字串放在前面会是一个好主意，英文即使字符串为null，这个语句也可以正常工作<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">"world"</span>.equals(location)) ...</span><br></pre></td></tr></table></figure></li></ul><h5 id="equalsIgnoreCase方法"><a href="#equalsIgnoreCase方法" class="headerlink" title="equalsIgnoreCase方法"></a>equalsIgnoreCase方法</h5><p>不考虑大小写的比较两个字符串</p><h5 id="compareTo方法"><a href="#compareTo方法" class="headerlink" title="compareTo方法"></a>compareTo方法</h5><p>可以告诉你两个字符串按照字典中的顺序（依赖于Unicode值）哪个在前。<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first.compareTo(second)</span><br></pre></td></tr></table></figure><p></p><ul><li>返回值&lt;0(负整数)，first排前</li><li>返回值=0 ,两者相等</li><li>返回值&gt;0(正整数),second排前</li></ul><p>对用户可读的字符串排序时，推荐使用Collator对象（它知道关于特定语言的排序规则）。</p><h4 id="数字与字符串转换"><a href="#数字与字符串转换" class="headerlink" title="数字与字符串转换"></a>数字与字符串转换</h4><p><strong>整数转换为字符串</strong>　可调用静态方法　Integer.toString(num);<br>可以传入第二个参数作为转换的进制（2~36）Integer.toString(num , 2); 则返回为num转换为２进制之后的结果</p><ul><li>将整数转换为字符串的更简单的办法是<code>&quot;&quot;+num</code>.但是有些人认为这种方式比较丑陋并且效率低下。</li></ul><p>相反</p><p><strong>将整数的字符串转为数字</strong>，使用Integer.parseInt方法。<br></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n = Integer.parseInt(<span class="string">"11"</span>);</span><br><span class="line"><span class="comment">//也可以指定进制数</span></span><br><span class="line">m = Integer.parseInt(<span class="string">"11"</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//ｍ的值为整数３</span></span><br></pre></td></tr></table></figure><p></p><p>对于<strong>浮点数</strong>，也有对应的Double.toString和Double.parseDouble方法。</p><h4 id="String类API"><a href="#String类API" class="headerlink" title="String类API"></a>String类API</h4><p><strong><em>有用的String类方法</em></strong><br><img src="/img/core_java_post/day3-1.jpg" alt="有用的String类方法"><br>注意，在Java 中　String 类是不可变的(immutable)．也就是说任何String类的方法都不能修改自己的字符串。返回的是一个新的字符串，源字符串不会改变。</p><p>== 可以在网上下载详细的JavaAPI文档，里面有各个API的详解 ==</p><h4 id="编码点和编码单元"><a href="#编码点和编码单元" class="headerlink" title="编码点和编码单元"></a>编码点和编码单元</h4><p>Java开始创建时，拥抱了刚出来不久的Unicode标准，目的是解决棘手的字符编码的问题在Unicode之前，有很多不兼容的字符编码方式，每个国家都在做类似的事情，拓展ASCII标准来容纳各自的语言符号，不同编码文件之间的交流成为了一个大问题。</p><p>现在，Unicode需要21个bit，而不是设计之初的16bit(因为引入了比实际时估计更多的字符而扩容)。每个有效的Unicode值被称为编码点(code point).</p><p>Java 诞生在16bit向21bit过度的时期，深受其苦。在Java中，字符串不是Unicode字符或者编码点的序列，而是编码单元(code unit),UTF-16编码的１６比特序列.<br><img src="/img/core_java_post/day3-2.jpg" alt="编码点和编码单元的一些方法"></p></div><blockquote class="post-copyright"><div class="content"> <span class="post-time">最后更新时间：<time datetime="2019-01-23T12:51:49.728Z" itemprop="dateUpdated">2019-01-23 20:51:49</time></span><br> 转载请注明链接：<a href="/2018/10/22/Core-Java-Day-3-基本编程结构-3/" target="_blank" rel="external">https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/</a></div><footer> <a href="https://minoyu.github.io"><img src="/img/avatar.jpeg" alt="Minoyu"> Minoyu</a></footer></blockquote><div class="page-reward"> <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a></div><div class="post-footer"><ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/《Java核心技术》/">《Java核心技术》</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul><div class="page-share-wrap"><div class="page-share" id="pageShare"><ul class="reset share-icons"><li><a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&pic=https://minoyu.github.io/img/avatar.jpeg" data-title="微博"><i class="icon icon-weibo"></i></a></li><li><a class="weixin share-sns wxFab" href="javascript:;" data-title="微信"><i class="icon icon-weixin"></i></a></li><li><a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&source=在这里记录我的每一点成长" data-title=" QQ"><i class="icon icon-qq"></i></a></li><li><a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Facebook"><i class="icon icon-facebook"></i></a></li><li><a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&via=https://minoyu.github.io" data-title=" Twitter"><i class="icon icon-twitter"></i></a></li><li><a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Google+"><i class="icon icon-google-plus"></i></a></li></ul></div><a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle"><i class="icon icon-share-alt icon-lg"></i></a></div></div></div><nav class="post-nav flex-row flex-justify-between"><div class="waves-block waves-effect prev"><a href="/2018/10/25/Core-Java-Day4-基本编程结构4/" id="post-prev" class="post-nav-link"><div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div><h4 class="title">Core Java Day4--基本编程结构4(输入与输出、控制流)</h4></a></div><div class="waves-block waves-effect next"><a href="/2018/10/19/Core-Java-Day-2-基本编程结构-2/" id="post-next" class="post-nav-link"><div class="tips">Next<i class="icon icon-angle-right icon-lg icon-pl"></i></div><h4 class="title">Core Java Day 2--基本编程结构2(基本类型、变量)</h4></a></div></nav></article><div id="reward" class="page-modal reward-lay"><a class="close" href="javascript:;"><i class="icon icon-close"></i></a><h3 class="reward-title"><i class="icon icon-quote-left"></i> 谢谢大爷~<i class="icon icon-quote-right"></i></h3><div class="reward-content"><div class="reward-code"> <img id="rewardCode" src="/img/wechatme.png" alt="打赏二维码"></div> <label class="reward-toggle"><input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechatme.png" data-alipay="/img/alipayme.jpg"><div class="reward-toggle-ctrol"> <span class="reward-toggle-item wechat">微信</span><span class="reward-toggle-label"></span> <span class="reward-toggle-item alipay">支付宝</span></div></label></div></div></div><footer class="footer"><div class="top"><p> <span id="busuanzi_container_site_uv" style="display:none">站点总访客数：<span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv" style="display:none">站点总访问量：<span id="busuanzi_value_site_pv"></span></span></p><p><span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span> <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span></p></div><div class="bottom"><p><span>Minoyu &copy; 2018 - 2019</span> <span><a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备16041373号</a><br> Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span></p></div></footer></main><div class="mask" id="mask"></div><a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a><div class="global-share" id="globalShare"><ul class="reset share-icons"><li><a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&pic=https://minoyu.github.io/img/avatar.jpeg" data-title="微博"><i class="icon icon-weibo"></i></a></li><li><a class="weixin share-sns wxFab" href="javascript:;" data-title="微信"><i class="icon icon-weixin"></i></a></li><li><a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&source=在这里记录我的每一点成长" data-title=" QQ"><i class="icon icon-qq"></i></a></li><li><a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Facebook"><i class="icon icon-facebook"></i></a></li><li><a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&via=https://minoyu.github.io" data-title=" Twitter"><i class="icon icon-twitter"></i></a></li><li><a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Google+"><i class="icon icon-google-plus"></i></a></li></ul></div><div class="page-modal wx-share" id="wxShare"><a class="close" href="javascript:;"><i class="icon icon-close"></i></a><p>扫一扫，分享到微信</p> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW7DMAwEwPz/0+21QGp7SYpFCoxPhuHIGh0kZanXK76+flzvz/Nfvd9fPbn/7eELDw8Pb9D1+6bz56cGK//uZR/w8PDw1nhXnUjeyaf+HD/pDx4eHt5/4U023NX28fDw8P4jb6Nz+a/w8PDwPoHXi1DzQCG5r27cD2cteHh4eDGvGhB8wv1KfQ8PDw9vXFXPg4b8QEAeAd+3HPUWDw8Pb4GXT7gJNYdVhynfLuPh4eFt85IO5bA88M1LZfkC8Ms9Hh4e3gLvYcUIJvFqLFsdyurwVRZEPDw8vA6vujBUu1UdlN4W/+G/Ah4eHt5RXhIBTCKJ3jvJpF8ohuHh4eGt8fIt7KS71U4nfYsKYHh4eHiHeL2CUx7pTjqaLGMPz/Hw8PDWeEnYOgkO8oJWr+WHhQEPDw9vjTcpbuXvV99MFoDLgcDDw8Nb4OURQB4EV7syiSSiRQUPDw/vKO9UCFsNEXpLTjnCwMPDw1vg5R+rPu9tkefDHWXVeHh4eId4k0C29+Eqo5kw4OHh4R3lVbew1QME1eJW74jV5fKGh4eHt8DrlcTum87TgMkRhGYLeHh4eGNeEsX2QoTqdJ/fFzb3eHh4eAu87Q9MtuzJoYGon3h4eHhrvGrMOilQ9Y4R5OwopcbDw8Mb8yYb6xx//2SyDBS21Hh4eHiHeKc21tUpvjfpF9rHw8PDW+M1DzYFoUPS2qhqd98mHh4e3lHeV/E61a0kaJiX2fDw8PA2eL0Jt7o8VElni3N4eHh4G7xeeLoyQccRc+G7eHh4eGu83qTcyz+So1fV2HeUteDh4eH9Oa+3Ue4tPOVQGA8PD+8DePk0nXw+OYaVHyloHh3Aw8PDa/F6Ra+80JXHu9UDBw9IPDw8vAXeqTg12QQXJvRitHGgvoeHh4f3zPsGPCZUuX49MyIAAAAASUVORK5CYII=" alt="微信分享二维码"></div><script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script><script>var BLOG={ROOT:"/",SHARE:!0,REWARD:!0}</script><script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script><div class="search-panel" id="search-panel"><ul class="search-result" id="search-result"></ul></div><template id="search-tpl"><li class="item"><a href="{path}" class="waves-block waves-effect"><div class="title ellipsis" title="{title}">{title}</div><div class="flex-row flex-middle"><div class="tags ellipsis"> {tags}</div> <time class="flex-col time">{date}</time></div></a></li></template><script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>!function(){var t,e=document.title;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="死鬼去哪里了！",clearTimeout(t)):(document.title="(つェ⊂)咦!又好了!",t=setTimeout(function(){document.title=e},2e3))})}()</script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Core Java Day 3--基本编程结构3(操作运算、字符串) | 小余有个大梦想 | 我的学习笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="学习笔记,《Java核心技术》">
+    <meta name="description" content="1.4 操作运算Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。 基本运算 要格外小心/操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。 整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。 若ｎ为奇数，当ｎ为正数时，n%2 的值为１； 当ｎ为负数时，n%2的值为－１。实际中处理">
+<meta name="keywords" content="学习笔记,《Java核心技术》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Core Java Day 3--基本编程结构3(操作运算、字符串)">
+<meta property="og:url" content="https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/index.html">
+<meta property="og:site_name" content="小余有个大梦想">
+<meta property="og:description" content="1.4 操作运算Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。 基本运算 要格外小心/操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。 整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。 若ｎ为奇数，当ｎ为正数时，n%2 的值为１； 当ｎ为负数时，n%2的值为－１。实际中处理">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://minoyu.github.io/img/core_java_post/day3-1.jpg">
+<meta property="og:image" content="https://minoyu.github.io/img/core_java_post/day3-2.jpg">
+<meta property="og:updated_time" content="2019-01-23T12:51:49.728Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Core Java Day 3--基本编程结构3(操作运算、字符串)">
+<meta name="twitter:description" content="1.4 操作运算Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。 基本运算 要格外小心/操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。 整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。 若ｎ为奇数，当ｎ为正数时，n%2 的值为１； 当ｎ为负数时，n%2的值为－１。实际中处理">
+<meta name="twitter:image" content="https://minoyu.github.io/img/core_java_post/day3-1.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="小余有个大梦想" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brandbg.jpg)">
+      <div class="brand">
+        <a href="https://we.sharelove.site/about/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Minoyu</h5>
+          <a href="mailto:yu-letao@outlook.com" title="yu-letao@outlook.com" class="mail">yu-letao@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://we.sharelove.site" target="_blank" >
+                <i class="icon icon-lg icon-gratipay"></i>
+                ShareLove
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Minoyu" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://we.sharelove.site/about/" target="_blank" >
+                <i class="icon icon-lg icon-info"></i>
+                Info
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Core Java Day 3--基本编程结构3(操作运算、字符串)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Core Java Day 3--基本编程结构3(操作运算、字符串)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-22T15:06:11.000Z" itemprop="datePublished" class="page-time">
+  2018-10-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/Java/">Java</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-4-操作运算"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.4 操作运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本运算"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本运算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数学方法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数学方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数字类型的转换"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数字类型的转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#大数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">大数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">字符串</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串连接"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">字符串连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#子字符串（字符串拆分）"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">子字符串（字符串拆分）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串比较"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">字符串比较</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#equalsIgnoreCase方法"><span class="post-toc-number">1.5.3.1.</span> <span class="post-toc-text">equalsIgnoreCase方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#compareTo方法"><span class="post-toc-number">1.5.3.2.</span> <span class="post-toc-text">compareTo方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数字与字符串转换"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">数字与字符串转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#String类API"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">String类API</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编码点和编码单元"><span class="post-toc-number">1.5.6.</span> <span class="post-toc-text">编码点和编码单元</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Core-Java-Day-3-基本编程结构-3"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Core Java Day 3--基本编程结构3(操作运算、字符串)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-22 23:06:11" datetime="2018-10-22T15:06:11.000Z"  itemprop="datePublished">2018-10-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/">学习笔记</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/学习笔记/Java/">Java</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="1-4-操作运算"><a href="#1-4-操作运算" class="headerlink" title="1.4 操作运算"></a>1.4 操作运算</h2><p>Java 与基于Ｃ语言的所有语言使用相似的操作符，接下来我来找一些在java需要注意的地方。</p>
+<h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><ul>
+<li>要格外小心<code>/</code>操作符，如果两个操作数都是整数，它代表整数。如果有一个操作数为小数则输出结果为浮点型。（类型的自动转换）。</li>
+<li>整数除以０会导致异常，浮点数除以０会产生无限值或NaN,不会产生异常。</li>
+<li>若ｎ为奇数，当ｎ为正数时，<code>n%2</code> 的值为１； 当ｎ为负数时，<code>n%2</code>的值为－１。实际中处理负数是不幸的。当操作数可能为负数时，切记小心使用％。可以考虑使用Math.floorMod方法。</li>
+</ul>
+<h3 id="数学方法"><a href="#数学方法" class="headerlink" title="数学方法"></a>数学方法</h3><p>举个例子，没有操作符可以产生次方，但是你可以调用Math.pow方法，<code>Math.pow(x,y)</code>会产生ｘ的ｙ次方。</p>
+<p>静态方法不用在对象上调用。像静态常量一样，你只需要在前面加上声明该静态方法/变量的类名</p>
+<p>类似的方法还有<code>Math.sqrt</code>/<code>Math.min</code>/<code>Math.max</code>等</p>
+<p>此外Math类中提供三角函数和对数方法，以及常量<code>Math.PI</code>和<code>Math.E</code>。</p>
+<ul>
+<li>Math类中提供一些可以让整数运算更安全的方法，你可以捕获异常或终止程序，而不会是像普通的数学运算符那样使程序以错误的结果默默继续运行。</li>
+</ul>
+<h3 id="数字类型的转换"><a href="#数字类型的转换" class="headerlink" title="数字类型的转换"></a>数字类型的转换</h3><p>在Java中，如果没有信息损失，转换总是合法的。</p>
+<ul>
+<li>从byte类型　到　short、int、long或double</li>
+<li>从short和char类型　到　int、long或double</li>
+<li>从int类型到long、double</li>
+<li>从整型到浮点型总是合法的</li>
+</ul>
+<p>==需要注意的是　下面的转换是合法的，但是他们损失了信息==</p>
+<ul>
+<li>从int到float</li>
+<li>从long到float或double。</li>
+</ul>
+<p>如果转换不允许，可以使用cast运算符（将目标类型写在括号中）来强制转换，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = <span class="number">3.75</span>;</span><br><span class="line"><span class="keyword">int</span> n =(<span class="keyword">int</span>)x;</span><br><span class="line"><span class="comment">//这种情况下，就丢弃了小数部分，将ｎh设置为了3.</span></span><br></pre></td></tr></table></figure>
+<p>如果你想获得四舍五入后的整数而不是直接丢弃小数，你可以使用Math.round(x)。</p>
+<p>==当使用cast方式强制转换数据时，需要格外注意。==<br>如果你收到了警告，cast转换会悄悄地丢弃掉数字的部分数据，你可以使用Math.toIntExact方法代替，当无法转换时会抛出异常。</p>
+<h3 id="大数"><a href="#大数" class="headerlink" title="大数"></a>大数</h3><p>如果基本的整数类型和浮点类型精确度还不够满足需求，你可以使用java.math包中的BigInteger和BigDecimal类。这些类的对象代表了数字，该数字有任意长序列的位数。他们实现了对任意精度整数/浮点数的计算。</p>
+<p>BigInteger类的静态方法valueOf讲long型转换为BigInteger<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger n = BigInteger.valueOf(<span class="number">124135431242L</span>);</span><br></pre></td></tr></table></figure></p>
+<p>你也可以使用数字字符串构造BigInteger:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger m = <span class="keyword">new</span> BigInteger(<span class="string">"124135431242"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Java不允许对象使用操作符，因此操作大数时，必须使用方法调用。例如<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BigInteger o = BigInteger.valueOf(<span class="number">5</span>).multiply(n.add(m))</span><br><span class="line"><span class="comment">//5*(n+m)</span></span><br></pre></td></tr></table></figure></p>
+<p>记得在之前我们遇到的,使用浮点类型2.0-1.1的结果为0.99999999…吗,在这里我们使用BigDecimal可以计算出准确结果。<br>BigDecimal.valueOf(n,e) 返回BigDecimal实例，其值为ｎ×10的-e次方<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal.valueOf(<span class="number">2</span>,<span class="number">0</span>).substract(BigDecimal.valueOf(<span class="number">11</span>,<span class="number">1</span>))</span><br><span class="line"><span class="comment">//2.0-1.1 输出的结果精确为0.9</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>字符串就是一系列的字符，在java中，字符串可以包含任何Unicode字符。</p>
+<h4 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h4><p>可以使用操作符＋连接两个字符串<br>如果将一个字符串和另一个值连接起来，另一个值会转换为字符串。</p>
+<p>==注意　如果将连接与加写在一起，可能会有意想不到的结果==<br>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> age =<span class="number">20</span>;</span><br><span class="line"><span class="string">"your age :"</span> + age + <span class="number">1</span>;</span><br><span class="line"><span class="comment">//结果为　your age : 201</span></span><br><span class="line"><span class="comment">//正确为"your age :" + （age + 1）;</span></span><br></pre></td></tr></table></figure></p>
+<p>也可以使用String类下的join方法讲几个字符串连接起来并以分割符隔开<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String names = String.join(<span class="string">","</span>,<span class="string">"Mino"</span>,<span class="string">"Peter"</span>,<span class="string">"Paul"</span>);</span><br><span class="line"><span class="comment">//names的结果为“Mino,Peter,Paul“</span></span><br><span class="line"><span class="comment">//或者第二个参数提供字符串数组</span></span><br></pre></td></tr></table></figure></p>
+<p>如果有大量字符串需要连接，那么上面这种方式是效率低下的，最好使用StringBuilder代替<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="keyword">while</span>(isMoreString)&#123;</span><br><span class="line">    builder.append(nextString);</span><br><span class="line">&#125;</span><br><span class="line">String result = builder.toString();</span><br></pre></td></tr></table></figure></p>
+<h4 id="子字符串（字符串拆分）"><a href="#子字符串（字符串拆分）" class="headerlink" title="子字符串（字符串拆分）"></a>子字符串（字符串拆分）</h4><p>可以使用substring方法将字符串拆开<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String greeting = <span class="string">"Hello world"</span>;</span><br><span class="line">String location = greeting.substring(<span class="number">7</span>,<span class="number">12</span>);</span><br><span class="line"><span class="comment">//设置location为"world"(起位置７　结束位置12,字符串的位置从０开始)</span></span><br></pre></td></tr></table></figure></p>
+<p>你也可以用split()方法将含有分隔符分割的字符串提取出子字符串，返回一个子字符串数组。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String names = <span class="string">"Peter,Mino,Mary"</span>;</span><br><span class="line">String[] result = names.split(<span class="string">","</span>);</span><br><span class="line"><span class="comment">//返回的结果值为数组["Peter","Mino","Mary"]</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="字符串比较"><a href="#字符串比较" class="headerlink" title="字符串比较"></a>字符串比较</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">location.equals(<span class="string">"world"</span>);</span><br><span class="line"><span class="comment">//若location是字符串”world“,返回真</span></span><br></pre></td></tr></table></figure>
+<p>==不要使用<code>==</code>操作符来比较字符串，只有当两者在内存中为同一对象时，返回真，（可以看成地址的比较）。在Java虚拟机中，每个文字串只有一个实例，所以”world“<code>==</code>“world”为真，但是如果字符串是计算得来的，那么变量中的字符串会单独存放到一个实例中，此时虽然他们的值相等，但<code>==</code>返回值为假==</p>
+<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"world"</span>==<span class="string">"world"</span>;</span><br><span class="line"><span class="comment">//返回true</span></span><br><span class="line">String greeting = <span class="string">"Hello world"</span>;</span><br><span class="line">String location = greeting.substring(<span class="number">7</span>,<span class="number">12</span>);</span><br><span class="line">location == <span class="string">"world"</span>;</span><br><span class="line"><span class="comment">//返回false</span></span><br></pre></td></tr></table></figure></p>
+<p>与其他任何变量一样，String变量可以是null，这表明该变量根本没有引用任何对象，甚至不是一个空字符串。</p>
+<p>null与空字符串<code>&quot;&quot;</code>并不相同。空字符串是个长度为零的字符串，而null根本不是字符串。在null上调用任何方法都会抛出空指针异常。</p>
+<ul>
+<li>可以使用<code>==</code>来测试一个字符串是否为null.<code>if(location == null)...</code></li>
+<li>比较字符串和文字串时，将文字串放在前面会是一个好主意，英文即使字符串为null，这个语句也可以正常工作<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">"world"</span>.equals(location)) ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="equalsIgnoreCase方法"><a href="#equalsIgnoreCase方法" class="headerlink" title="equalsIgnoreCase方法"></a>equalsIgnoreCase方法</h5><p>不考虑大小写的比较两个字符串</p>
+<h5 id="compareTo方法"><a href="#compareTo方法" class="headerlink" title="compareTo方法"></a>compareTo方法</h5><p>可以告诉你两个字符串按照字典中的顺序（依赖于Unicode值）哪个在前。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first.compareTo(second)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>返回值&lt;0(负整数)，first排前</li>
+<li>返回值=0 ,两者相等</li>
+<li>返回值&gt;0(正整数),second排前</li>
+</ul>
+<p>对用户可读的字符串排序时，推荐使用Collator对象（它知道关于特定语言的排序规则）。</p>
+<h4 id="数字与字符串转换"><a href="#数字与字符串转换" class="headerlink" title="数字与字符串转换"></a>数字与字符串转换</h4><p><strong>整数转换为字符串</strong>　可调用静态方法　Integer.toString(num);<br>可以传入第二个参数作为转换的进制（2~36）Integer.toString(num , 2); 则返回为num转换为２进制之后的结果</p>
+<ul>
+<li>将整数转换为字符串的更简单的办法是<code>&quot;&quot;+num</code>.但是有些人认为这种方式比较丑陋并且效率低下。</li>
+</ul>
+<p>相反</p>
+<p><strong>将整数的字符串转为数字</strong>，使用Integer.parseInt方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n = Integer.parseInt(<span class="string">"11"</span>);</span><br><span class="line"><span class="comment">//也可以指定进制数</span></span><br><span class="line">m = Integer.parseInt(<span class="string">"11"</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//ｍ的值为整数３</span></span><br></pre></td></tr></table></figure></p>
+<p>对于<strong>浮点数</strong>，也有对应的Double.toString和Double.parseDouble方法。</p>
+<h4 id="String类API"><a href="#String类API" class="headerlink" title="String类API"></a>String类API</h4><p><strong><em>有用的String类方法</em></strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/core_java_post/day3-1.jpg" alt="有用的String类方法" title="">
+                </div>
+                <div class="image-caption">有用的String类方法</div>
+            </figure><br>注意，在Java 中　String 类是不可变的(immutable)．也就是说任何String类的方法都不能修改自己的字符串。返回的是一个新的字符串，源字符串不会改变。</p>
+<p>== 可以在网上下载详细的JavaAPI文档，里面有各个API的详解 ==</p>
+<h4 id="编码点和编码单元"><a href="#编码点和编码单元" class="headerlink" title="编码点和编码单元"></a>编码点和编码单元</h4><p>Java开始创建时，拥抱了刚出来不久的Unicode标准，目的是解决棘手的字符编码的问题在Unicode之前，有很多不兼容的字符编码方式，每个国家都在做类似的事情，拓展ASCII标准来容纳各自的语言符号，不同编码文件之间的交流成为了一个大问题。</p>
+<p>现在，Unicode需要21个bit，而不是设计之初的16bit(因为引入了比实际时估计更多的字符而扩容)。每个有效的Unicode值被称为编码点(code point).</p>
+<p>Java 诞生在16bit向21bit过度的时期，深受其苦。在Java中，字符串不是Unicode字符或者编码点的序列，而是编码单元(code unit),UTF-16编码的１６比特序列.<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/core_java_post/day3-2.jpg" alt="编码点和编码单元的一些方法" title="">
+                </div>
+                <div class="image-caption">编码点和编码单元的一些方法</div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-23T12:51:49.728Z" itemprop="dateUpdated">2019-01-23 20:51:49</time>
+</span><br>
+
+
+        
+        转载请注明链接：<a href="/2018/10/22/Core-Java-Day-3-基本编程结构-3/" target="_blank" rel="external">https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://minoyu.github.io">
+            <img src="/img/avatar.jpeg" alt="Minoyu">
+            Minoyu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/《Java核心技术》/">《Java核心技术》</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&pic=https://minoyu.github.io/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&source=在这里记录我的每一点成长" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&via=https://minoyu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/25/Core-Java-Day4-基本编程结构4/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Core Java Day4--基本编程结构4(输入与输出、控制流)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/19/Core-Java-Day-2-基本编程结构-2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Core Java Day 2--基本编程结构2(基本类型、变量)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatme.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatme.png" data-alipay="/img/alipayme.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Minoyu &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备16041373号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&pic=https://minoyu.github.io/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&title=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&source=在这里记录我的每一点成长" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Core Java Day 3--基本编程结构3(操作运算、字符串)》 — 小余有个大梦想&url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/&via=https://minoyu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://minoyu.github.io/2018/10/22/Core-Java-Day-3-基本编程结构-3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW7DMAwEwPz/0+21QGp7SYpFCoxPhuHIGh0kZanXK76+flzvz/Nfvd9fPbn/7eELDw8Pb9D1+6bz56cGK//uZR/w8PDw1nhXnUjeyaf+HD/pDx4eHt5/4U023NX28fDw8P4jb6Nz+a/w8PDwPoHXi1DzQCG5r27cD2cteHh4eDGvGhB8wv1KfQ8PDw9vXFXPg4b8QEAeAd+3HPUWDw8Pb4GXT7gJNYdVhynfLuPh4eFt85IO5bA88M1LZfkC8Ms9Hh4e3gLvYcUIJvFqLFsdyurwVRZEPDw8vA6vujBUu1UdlN4W/+G/Ah4eHt5RXhIBTCKJ3jvJpF8ohuHh4eGt8fIt7KS71U4nfYsKYHh4eHiHeL2CUx7pTjqaLGMPz/Hw8PDWeEnYOgkO8oJWr+WHhQEPDw9vjTcpbuXvV99MFoDLgcDDw8Nb4OURQB4EV7syiSSiRQUPDw/vKO9UCFsNEXpLTjnCwMPDw1vg5R+rPu9tkefDHWXVeHh4eId4k0C29+Eqo5kw4OHh4R3lVbew1QME1eJW74jV5fKGh4eHt8DrlcTum87TgMkRhGYLeHh4eGNeEsX2QoTqdJ/fFzb3eHh4eAu87Q9MtuzJoYGon3h4eHhrvGrMOilQ9Y4R5OwopcbDw8Mb8yYb6xx//2SyDBS21Hh4eHiHeKc21tUpvjfpF9rHw8PDW+M1DzYFoUPS2qhqd98mHh4e3lHeV/E61a0kaJiX2fDw8PA2eL0Jt7o8VElni3N4eHh4G7xeeLoyQccRc+G7eHh4eGu83qTcyz+So1fV2HeUteDh4eH9Oa+3Ue4tPOVQGA8PD+8DePk0nXw+OYaVHyloHh3Aw8PDa/F6Ra+80JXHu9UDBw9IPDw8vAXeqTg12QQXJvRitHGgvoeHh4f3zPsGPCZUuX49MyIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
