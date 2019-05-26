@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="小余有个大梦想">
 <meta property="og:description" content="什么是SemVer？最近吴大佬的科普下， 简单了解了一些SemVer语义化版本号的规范， 准备在这里记录和总结一些自己的想法。  首先， 我们来看一下前端React框架最近发布的版本号的命名。   v16.9.0-alpha.0 v16.8.6 v16.8.5 v16.8.4 v16.8.3 v16.8.2 v16.8.1 v16.8.0 v16.8.0-alpha.1 v16.7.0  可以看出">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-26T17:25:42.675Z">
+<meta property="og:updated_time" content="2019-05-26T17:28:17.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SemVer? 起版本号当然要讲些规矩">
 <meta name="twitter:description" content="什么是SemVer？最近吴大佬的科普下， 简单了解了一些SemVer语义化版本号的规范， 准备在这里记录和总结一些自己的想法。  首先， 我们来看一下前端React框架最近发布的版本号的命名。   v16.9.0-alpha.0 v16.8.6 v16.8.5 v16.8.4 v16.8.3 v16.8.2 v16.8.1 v16.8.0 v16.8.0-alpha.1 v16.7.0  可以看出">
@@ -174,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是SemVer？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是SemVer？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不就是个版本号，-为啥会有Semver？"><span class="post-toc-number">2.</span> <span class="post-toc-text">不就是个版本号， 为啥会有Semver？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有啥好处啊举个栗子？"><span class="post-toc-number">3.</span> <span class="post-toc-text">有啥好处啊举个栗子？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在package-json中的运用-x"><span class="post-toc-number">4.</span> <span class="post-toc-text">在package.json中的运用( ^~*x )</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是SemVer？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是SemVer？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#版本号而已为啥会有Semver？"><span class="post-toc-number">2.</span> <span class="post-toc-text">版本号而已为啥会有Semver？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有啥好处举个栗子？"><span class="post-toc-number">3.</span> <span class="post-toc-text">有啥好处举个栗子？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在package-json中的运用-x"><span class="post-toc-number">4.</span> <span class="post-toc-text">在package.json中的运用( ^~*x )</span></a></li></ol>
         </nav>
     </aside>
 
@@ -235,12 +235,12 @@
 <p>先行版本号及版本编译元数据可以加到“主版本号. 次版本号. 修订号”的后面， 作为延伸。 </p>
 </blockquote>
 <p>以上的三点基本可以概括Semver规范所要求的版本号格式了， 具体的一些细则可以参考 <a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">https://semver.org/lang/zh-CN/</a></p>
-<h2 id="不就是个版本号，-为啥会有Semver？"><a href="#不就是个版本号，-为啥会有Semver？" class="headerlink" title="不就是个版本号， 为啥会有Semver？"></a>不就是个版本号， 为啥会有Semver？</h2><p>在我的理解中， SemVer就是一套规定了版本号应该如何去表示， 如何增加， 如何进行比较， 不同的版本号意味着什么的规范。 </p>
+<h2 id="版本号而已为啥会有Semver？"><a href="#版本号而已为啥会有Semver？" class="headerlink" title="版本号而已为啥会有Semver？"></a>版本号而已为啥会有Semver？</h2><p>在我的理解中， SemVer就是一套规定了版本号应该如何去表示， 如何增加， 如何进行比较， 不同的版本号意味着什么的规范。 </p>
 <p>也许在我们以往的认识中， 版本号是一个很随意的存在， 而判断它需不需要进位的依据仅仅是”我觉得差不多可以了改个版本了“。 </p>
 <p>然而当我们的项目变得庞大起来时， 往往需要分包或者依赖于一些其他的软件包。 软件包是会不断更新和变化的， 这时就存在了不同软件包版本之间的依赖关系， 一旦管理不慎， 很容易出现有一些bug的情况， 例如A包需要依赖B包的一个新功能， 但当前的B包过久无法提供， 软件包之间无法完成相互的依赖。 </p>
 <p>如今的前端项目， 打开我们的 <code>package.json</code> 文件， 我们甚至能找到几十个甚至上百个依赖的包。 而这很可能只是冰山一角， 还有许许多多依赖的依赖包。 于是忽， 如何更好的管理和规范这些包的版本， 让其统一便于理解和使用成为了一个问题。 </p>
 <p>因此， Github 起草了一个具有指导意义的， 统一的版本号表示规则， 称为 Semantic Versioning(语义化版本表示)。 </p>
-<h2 id="有啥好处啊举个栗子？"><a href="#有啥好处啊举个栗子？" class="headerlink" title="有啥好处啊举个栗子？"></a>有啥好处啊举个栗子？</h2><p>不如我们举个例子来看看语义化后的版本如何让依赖地狱成为过2333～。 </p>
+<h2 id="有啥好处举个栗子？"><a href="#有啥好处举个栗子？" class="headerlink" title="有啥好处举个栗子？"></a>有啥好处举个栗子？</h2><p>讲了很多大道理，不如我们举个例子来看看语义化后的版本如何让依赖地狱成为过去2333～。 </p>
 <ul>
 <li>首先， 我们假设有位 <code>”消防员“</code> ， 他参与救火任务时需要依赖 <code>”梯子“</code> 去攀爬。 </li>
 <li><code>消防员</code> 平时训练时要使用”梯子”第三代第一版时新增的功能( <code>消防员</code> 依赖于 <code>梯子 v3.1.0</code> )</li>
@@ -263,7 +263,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-05-26T17:25:42.675Z" itemprop="dateUpdated">2019-05-27 01:25:42</time>
+    最后更新时间：<time datetime="2019-05-26T17:28:17.102Z" itemprop="dateUpdated">2019-05-27 01:28:17</time>
 </span><br>
 
 
