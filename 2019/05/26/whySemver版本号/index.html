@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>SemVer? 起版本号当然要讲些规矩 | 小余有个大梦想 | 我的学习笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="开发杂记">
+    <meta name="description" content="什么是SemVer？最近吴大佬的科普下， 简单了解了一些SemVer语义化版本号的规范， 准备在这里记录和总结一些自己的想法。  首先， 我们来看一下前端React框架最近发布的版本号的命名。   v16.9.0-alpha.0 v16.8.6 v16.8.5 v16.8.4 v16.8.3 v16.8.2 v16.8.1 v16.8.0 v16.8.0-alpha.1 v16.7.0  可以看出">
+<meta name="keywords" content="开发杂记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SemVer? 起版本号当然要讲些规矩">
+<meta property="og:url" content="https://minoyu.github.io/2019/05/26/whySemver版本号/index.html">
+<meta property="og:site_name" content="小余有个大梦想">
+<meta property="og:description" content="什么是SemVer？最近吴大佬的科普下， 简单了解了一些SemVer语义化版本号的规范， 准备在这里记录和总结一些自己的想法。  首先， 我们来看一下前端React框架最近发布的版本号的命名。   v16.9.0-alpha.0 v16.8.6 v16.8.5 v16.8.4 v16.8.3 v16.8.2 v16.8.1 v16.8.0 v16.8.0-alpha.1 v16.7.0  可以看出">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-26T17:25:42.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SemVer? 起版本号当然要讲些规矩">
+<meta name="twitter:description" content="什么是SemVer？最近吴大佬的科普下， 简单了解了一些SemVer语义化版本号的规范， 准备在这里记录和总结一些自己的想法。  首先， 我们来看一下前端React框架最近发布的版本号的命名。   v16.9.0-alpha.0 v16.8.6 v16.8.5 v16.8.4 v16.8.3 v16.8.2 v16.8.1 v16.8.0 v16.8.0-alpha.1 v16.7.0  可以看出">
+    
+        <link rel="alternate" type="application/atom+xml" title="小余有个大梦想" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brandbg.jpg)">
+      <div class="brand">
+        <a href="https://we.sharelove.site/about/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpeg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Minoyu</h5>
+          <a href="mailto:yu-letao@outlook.com" title="yu-letao@outlook.com" class="mail">yu-letao@outlook.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://we.sharelove.site" target="_blank" >
+                <i class="icon icon-lg icon-gratipay"></i>
+                ShareLove
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Minoyu" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://we.sharelove.site/about/" target="_blank" >
+                <i class="icon icon-lg icon-info"></i>
+                Info
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SemVer? 起版本号当然要讲些规矩</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SemVer? 起版本号当然要讲些规矩</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-26T14:12:11.000Z" itemprop="datePublished" class="page-time">
+  2019-05-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/开发杂记/">开发杂记</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是SemVer？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是SemVer？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不就是个版本号，-为啥会有Semver？"><span class="post-toc-number">2.</span> <span class="post-toc-text">不就是个版本号， 为啥会有Semver？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有啥好处啊举个栗子？"><span class="post-toc-number">3.</span> <span class="post-toc-text">有啥好处啊举个栗子？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在package-json中的运用-x"><span class="post-toc-number">4.</span> <span class="post-toc-text">在package.json中的运用( ^~*x )</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-whySemver版本号"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SemVer? 起版本号当然要讲些规矩</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-26 22:12:11" datetime="2019-05-26T14:12:11.000Z"  itemprop="datePublished">2019-05-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/开发杂记/">开发杂记</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="什么是SemVer？"><a href="#什么是SemVer？" class="headerlink" title="什么是SemVer？"></a>什么是SemVer？</h2><p>最近吴大佬的科普下， 简单了解了一些SemVer语义化版本号的规范， 准备在这里记录和总结一些自己的想法。 </p>
+<p>首先， 我们来看一下前端React框架最近发布的版本号的命名。 </p>
+<ul>
+<li>v16.9.0-alpha.0</li>
+<li>v16.8.6</li>
+<li>v16.8.5</li>
+<li>v16.8.4</li>
+<li>v16.8.3</li>
+<li>v16.8.2</li>
+<li>v16.8.1</li>
+<li>v16.8.0</li>
+<li>v16.8.0-alpha.1</li>
+<li>v16.7.0</li>
+</ul>
+<p>可以看出 React 发布的版本是非常的清晰和规范的, 这就归功于Semver(语义化的版本)规范的功劳, 从中咱们不难可以总结出一些规律。 </p>
+<ol>
+<li>软件的版本通常由三位组成， 形如： X. Y. Z， 依照Semver规范， 版本格式： 主版本号. 次版本号. 修订号， 版本号递增规则如下： </li>
+</ol>
+<blockquote>
+<ul>
+<li>主版本号： 当你做了不兼容的 API 修改</li>
+<li>次版本号： 当你做了向下兼容的功能性新增 </li>
+<li>修订号： 当你做了向下兼容的问题修正。 </li>
+</ul>
+</blockquote>
+<ol start="2">
+<li><p>版本是严格递增的， 例如React此处是： 16.8.5 -&gt; 16.8.6-&gt; 16.9.0</p>
+</li>
+<li><p>在发布重要版本时， 可以发布alpha、 rc等先行版本</p>
+</li>
+</ol>
+<blockquote>
+<p>先行版本号及版本编译元数据可以加到“主版本号. 次版本号. 修订号”的后面， 作为延伸。 </p>
+</blockquote>
+<p>以上的三点基本可以概括Semver规范所要求的版本号格式了， 具体的一些细则可以参考 <a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">https://semver.org/lang/zh-CN/</a></p>
+<h2 id="不就是个版本号，-为啥会有Semver？"><a href="#不就是个版本号，-为啥会有Semver？" class="headerlink" title="不就是个版本号， 为啥会有Semver？"></a>不就是个版本号， 为啥会有Semver？</h2><p>在我的理解中， SemVer就是一套规定了版本号应该如何去表示， 如何增加， 如何进行比较， 不同的版本号意味着什么的规范。 </p>
+<p>也许在我们以往的认识中， 版本号是一个很随意的存在， 而判断它需不需要进位的依据仅仅是”我觉得差不多可以了改个版本了“。 </p>
+<p>然而当我们的项目变得庞大起来时， 往往需要分包或者依赖于一些其他的软件包。 软件包是会不断更新和变化的， 这时就存在了不同软件包版本之间的依赖关系， 一旦管理不慎， 很容易出现有一些bug的情况， 例如A包需要依赖B包的一个新功能， 但当前的B包过久无法提供， 软件包之间无法完成相互的依赖。 </p>
+<p>如今的前端项目， 打开我们的 <code>package.json</code> 文件， 我们甚至能找到几十个甚至上百个依赖的包。 而这很可能只是冰山一角， 还有许许多多依赖的依赖包。 于是忽， 如何更好的管理和规范这些包的版本， 让其统一便于理解和使用成为了一个问题。 </p>
+<p>因此， Github 起草了一个具有指导意义的， 统一的版本号表示规则， 称为 Semantic Versioning(语义化版本表示)。 </p>
+<h2 id="有啥好处啊举个栗子？"><a href="#有啥好处啊举个栗子？" class="headerlink" title="有啥好处啊举个栗子？"></a>有啥好处啊举个栗子？</h2><p>不如我们举个例子来看看语义化后的版本如何让依赖地狱成为过2333～。 </p>
+<ul>
+<li>首先， 我们假设有位 <code>”消防员“</code> ， 他参与救火任务时需要依赖 <code>”梯子“</code> 去攀爬。 </li>
+<li><code>消防员</code> 平时训练时要使用”梯子”第三代第一版时新增的功能( <code>消防员</code> 依赖于 <code>梯子 v3.1.0</code> )</li>
+<li>于是， 在日后的救火任务中 <code>消防员</code> 可以放心的去使用版本号大等于 <code>v3.1.0</code> 但小于 <code>v4.0.0</code> 的梯子(出现不可兼容更新， 主版本号递增， 无法保证原有的功能特性可以兼容)</li>
+<li>同时， 当有&gt;= <code>3.1.1</code> ~&lt; <code>3.2.0</code> 版本的 <code>梯子</code> 发布时， <code>消防员</code> 可以毫无顾虑， 无需学习就可使用， 因为这些梯子只是原有基础上的一些小修整(修订号更新无新功能添加， 仅为bugfix)</li>
+</ul>
+<p>哈哈哈， 上面这个例子应该可以很好理解了吧。 由此可以看出， SemVer大大的规范了软件包之间的版本发布， 你甚至不用去了解更新的具体内容， 就可以决定是否需要更新到特定版本的软件包。 </p>
+<h2 id="在package-json中的运用-x"><a href="#在package-json中的运用-x" class="headerlink" title="在package.json中的运用( ^~*x )"></a>在package.json中的运用( <code>^~*x</code> )</h2><p>当执行 <code>npm install package -S</code> 或 <code>yarn add</code> 来安装三方包时， 包管理器会首先安装包的最新版本， 然后将包名及版本号写入到 package.json 文件中。 </p>
+<p>我们可以对依赖包的版本号做一些修改来限定依赖包的版本范围。 例如:</p>
+<ul>
+<li>兼容模块新发布的修订补丁版本： ~16.2.0、 16.2.x、 16.2， 只有修订版本的更新会被匹配。 </li>
+<li>兼容模块新发布的小版本、 修订补丁版本： ^16.2.0、 16.x、 16， 小版本及修订版本的更新会被匹配。 </li>
+<li>兼容模块新发布的大版本、 小版本、 修订补丁版本： *、 x， 所有的版本都会被比配。 </li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-05-26T17:25:42.675Z" itemprop="dateUpdated">2019-05-27 01:25:42</time>
+</span><br>
+
+
+        
+        转载请注明链接：<a href="/2019/05/26/whySemver版本号/" target="_blank" rel="external">https://minoyu.github.io/2019/05/26/whySemver版本号/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://minoyu.github.io">
+            <img src="/img/avatar.jpeg" alt="Minoyu">
+            Minoyu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发杂记/">开发杂记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://minoyu.github.io/2019/05/26/whySemver版本号/&title=《SemVer? 起版本号当然要讲些规矩》 — 小余有个大梦想&pic=https://minoyu.github.io/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://minoyu.github.io/2019/05/26/whySemver版本号/&title=《SemVer? 起版本号当然要讲些规矩》 — 小余有个大梦想&source=在这里记录我的每一点成长" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://minoyu.github.io/2019/05/26/whySemver版本号/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SemVer? 起版本号当然要讲些规矩》 — 小余有个大梦想&url=https://minoyu.github.io/2019/05/26/whySemver版本号/&via=https://minoyu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://minoyu.github.io/2019/05/26/whySemver版本号/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/25/我的JavaScript简略笔记04/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">重学JS简略笔记04(标准库)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechatme.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechatme.png" data-alipay="/img/alipayme.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Minoyu &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备16041373号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://minoyu.github.io/2019/05/26/whySemver版本号/&title=《SemVer? 起版本号当然要讲些规矩》 — 小余有个大梦想&pic=https://minoyu.github.io/img/avatar.jpeg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://minoyu.github.io/2019/05/26/whySemver版本号/&title=《SemVer? 起版本号当然要讲些规矩》 — 小余有个大梦想&source=在这里记录我的每一点成长" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://minoyu.github.io/2019/05/26/whySemver版本号/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SemVer? 起版本号当然要讲些规矩》 — 小余有个大梦想&url=https://minoyu.github.io/2019/05/26/whySemver版本号/&via=https://minoyu.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://minoyu.github.io/2019/05/26/whySemver版本号/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS27bQBAFQN3/0s42gSP6vWnKAGeKK8OiqSku2v17veLr6811/enf93x/2vW3vD5xYWBgPJaRHOLdb949of2WG14QBgbGAYzrsJgc+vtz8idc3xmFbAwMDIzLdC0Pi/mnGBgYGHcF3EmNmTwZAwMDoy1ik+DbHihB3lyLY2BgPJCRh8vf//kj8w0MDIxHMdaa9XdRJyf551QYGBhbM9ZSvWQAkDTa5q8MAwPjTMbagkXLXnsFo+wVAwPjsYy7ysh5A65t8/0nw8XAwNiaMVnnau9v18iK/xgYGBibMhLSvesX7TrFYpqIgYFxACNPGduQOkkW6/8hGBgYGzHaIJizE3wLfvtXGBgYBzDycePacduCuR4hYGBgbM2YPCJP4FpAW9xiYGDsymiXtCYpY1515qEcAwPjNEYSldvAmhe9LeaHZQsMDIztGHkJOgmpbUGbb1ZgYGCcwGgXvPLm19raWZuGYmBg7M1oR4Ztk26+XjYKzRgYGBsx8kCZt/vbAF0Xru2yBQYGxhaMeSrWNtryIUH0WjEwMA5grLXY1jLQPKAnVAwMjL0ZX+XVBtZ2bJAnl/X8AQMD47GMebBr08rkcGuDCgwMjL0Za0F2MtTMB5950YuBgXECo22ftQ27PMVcHK9iYGBgDEJnUjbnLbkfKnIMDAyM8TBgrUkXFc8YGBgHMJIidjJ0bIeaH6zFMTAwHsjID9Smj5P78/EABgbG1ow/CC3bGYAgU9cAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
